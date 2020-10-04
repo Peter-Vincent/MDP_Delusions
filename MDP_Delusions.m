@@ -18,9 +18,6 @@ alpha     = 1;         % Precision over policies
 try rand_seed; catch rand_seed = 1; end   
 % Initialisation
 %--------------------------------------------------------------------------
-% spm_path = 'D:\Other_Science\Halucinations_SPM_paper\spm12';
-% spm_path = '/Users/rickadams/Code/SPM/spm12/';
-% addpath(genpath(spm_path))
 rng default
 dbstop if error
 tic
