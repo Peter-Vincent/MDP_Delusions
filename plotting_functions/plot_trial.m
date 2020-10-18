@@ -7,10 +7,10 @@ function plot_trial(mdp)
 
 num_trials = length(mdp);
 
-prior_belief    = zeros(1,num_trials);
+prior_belief    =  zeros(1,num_trials);
 posterior_belief=  zeros(1,num_trials);
 correct_post_inf=  zeros(1,num_trials);
-
+affect_state    =  zeros(1,num_trials);
 fig1 = figure('color','w');
 max_pos = length(mdp);
 max_total = round(max_pos * 1.5);
@@ -84,9 +84,15 @@ for trial = 1:num_trials
         correct_post_inf(1,trial) = 1;
     else
         correct_post_inf(1,trial) = 0;
-    end   
+    end
+    
+    states = cur_trial.s;
+    affect_state(1,trial) = states(4,2);
     
 end
+% Calculate performance metrics
+per_correct = (sum(feedback_traj == 1)/length(feedback_traj)) * 100;
+per_good_inf=(1-(sum(correct_post_inf == 1)/length(correct_post_inf)))*100;
 
 plot(1:num_trials,decision_traj,'LineWidth',2,'Color','k');
 ax = gca;
@@ -107,6 +113,8 @@ text(ax,0,-max_total+0.5*(max_total-max_pos-sep),advisor_message,'HorizontalAlig
 
 text(ax,num_trials+1,-max_total+0.5*(max_total-max_pos-sep),'Trustworthy','Color',trust_col);
 text(ax,num_trials+1,-max_pos/2,'Correct','Color',corr_feedback_col);
+text(ax,num_trials+1,-max_pos,strcat(num2str(per_correct),'%'),'Color',corr_feedback_col);
+
 
 %%%% Make the second figure to illustrate the beliefs of the agent with
 %%%% respect to the trial (prior, posterior, ...
@@ -124,7 +132,7 @@ for trial = 1:num_trials
     rectangle(ax2,'Position',[trial-0.5,0,1,2],...
         'FaceColor',trustworthy_colour,'EdgeColor','none');
     if correct_post_inf(1,trial) == 0
-        rectangle(ax2,'Position',[trial-0.5,0.4,1,0.6],...
+        rectangle(ax2,'Position',[trial-0.5,0.5,1,0.6],...
             'FaceColor',poor_inf_col,'EdgeColor','none');
     end
 end
@@ -134,12 +142,37 @@ posterior_message = sprintf('Posterior\nBelief');
 prior_message     = sprintf('Prior\nBelief');
 false_message     = sprintf('False\nInference');
 text(ax2,num_trials+1,0.5,prior_message,'Color','k');
+text(ax2,num_trials+1,0.25,strcat(num2str(per_good_inf),'%'),'Color',poor_inf_col);
+
 text(ax2,num_trials+1,1,posterior_message,'Color',posterior_col);
 text(ax2,num_trials+1,0,false_message,'Color',poor_inf_col);
 ax2.XLabel.String = "Trial number";
 ax2.YLabel.String = "Probability";
 hold('off');
-%% Make the combined figure
+
+%%%% Make the third figure to illustrate the affective state of the agent
+%%%% with smoothing across some number of trials (10 in this case)
+smoothing_kernel = 10;
+plot_range = smoothing_kernel:(length(affect_state)-smoothing_kernel);
+fig3 = figure('color','w');
+xlim([0.5 (num_trials+0.5)]);
+ylim([0.8 2.2]);
+ax3 = gca;
+hold(ax3,'on');
+smooth = movmean(affect_state,smoothing_kernel);
+affect_state_low = find(affect_state == 1);
+affect_state_high= find(affect_state == 2);
+scatter(ax3,affect_state_low,affect_state(affect_state_low),25,'filled','MarkerFaceColor',trust_col);
+scatter(ax3,affect_state_high,affect_state(affect_state_high),25,'filled','MarkerFaceColor',not_trust_col);
+plot(ax3,plot_range,1.5*ones(1,length(plot_range)),'LineWidth',1,'color','k');
+plot(ax3,plot_range,smooth(plot_range),'LineWidth',2,'color','k');
+ax3.XLabel.String = "Trial number";
+ax3.YAxis.Visible = 'off'; 
+text(ax3,0,1.5,"Arousal state",'HorizontalAlignment','right');
+text(ax3,num_trials+1,2,"High arousal",'Color','k');
+text(ax3,num_trials+1,1,"Low arousal",'Color','k');
+hold(ax3,'off');
+%% Make the combined figure without arousal
 fig1_axes = findobj('Parent',fig1,'Type','axes');
 fig2_axes = findobj('Parent',fig2,'Type','axes');
 h1_ax = fig1_axes(1);
@@ -160,5 +193,31 @@ sub_ax2.YLabel.String = "Probability";
 
 copyobj(get(h1_ax,'Children'),sub_ax1);
 copyobj(get(h2_ax,'Children'),sub_ax2);
+%% Make the combined figure with arousal
+fig3_axes = findobj('Parent',fig3,'Type','axes');
+h3_ax = fig3_axes(1);
+figure('Color','w');
 
+sub_ax1 = subplot(6,1,1:3);
+set(sub_ax1,'Box','off');
+sub_ax1.YAxis.Visible = 'off'; 
+sub_ax1.XAxis.Visible = 'off';
+sub_ax1.XLim = [0.5 (num_trials+0.5)];
+sub_ax1.YLim = [-max_total max_total];
 
+sub_ax2 = subplot(6,1,4);
+set(sub_ax2,'Box','off');
+sub_ax2.YAxis.Visible = 'off'; 
+sub_ax2.XAxis.Visible = 'off';
+sub_ax2.XLim = [0.5 (num_trials+0.5)];
+sub_ax2.YLim = [0.8 2.2];
+
+sub_ax3 = subplot(6,1,5:6);
+sub_ax3.XLim = [0.5 (num_trials+0.5)];
+sub_ax3.YLim = [0 1];
+sub_ax3.XLabel.String = "Trial number";
+sub_ax3.YLabel.String = "Probability";
+
+copyobj(get(h1_ax,'Children'),sub_ax1);
+copyobj(get(h3_ax,'Children'),sub_ax2);
+copyobj(get(h2_ax,'Children'),sub_ax3);

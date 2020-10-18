@@ -14,7 +14,7 @@ b_1_2     = [0 0;
 b_2       = [1 0;
              0 1];     % transitions for deck (inference +/- process)
 b_dir     = 600;       % Dirichlet parameter for B matrices
-c_3       = 1.5;       % Predicted affective outcomes 
+c_3       = 1;       % Predicted affective outcomes 
 alpha     = 2;         % Precision over policies
 try rand_seed; catch rand_seed = 1; end   
 % Initialisation
