@@ -14,33 +14,33 @@ The aim of the project is to provide a framework for simulating certain types of
 ## Figure summary
 ### Figure 1
 Figure 1 will show a schematic of the overall experimental structure, generative model and generative process, and provide a (clear) example of a single trial in a couple of different scenarios
-- [] Basic figure draft
-- [] Final figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ### Figure 2
 Figure 2 will show how habits can be beneficial in environments with regular statistics, but can lead to inflexibility if those statistics suddenly change and habits are over-learnt
-- [] Basic figure draft
-- [] Final figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ### Figure 3
 Figure 3 will show how imprecision in beliefs about the environment can couple with very strong priors to give rise to delusions, and will explore the nature of these delusions
-- [] Basic figure draft
-- [] Final figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ### Figure 4
 Figure 4 will show a parameters sweep of precision in beleifs about feedback and habit learning to show how these two parameters interplay to form delusions.  Habit parameter will be on a logarithmic scale
-- [] Basic figure draft
-- [] Final figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ### Figure 5
 Figure 5 will introduce the concept of affect, and show how it can be beneficial, but is in general very inflexible and will lead to poor performance, but not delusions
-- [] Basic figure draft
-- [] Final figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ### Figure 6
 Figure 6 will show a parameter sweep of precision in beliefs about feedback, with a set of different parameters over the habit forming and the strength of the affect
-- [] Basic figure draft
-- [] FInal figure complete
+- [ ] Basic figure draft
+- [ ] Final figure complete
 
 ## Key experimental details
 For all experiments we enforce habits to be formed over the advisor, not the cards.  We do this by beginning every experiment with a sequence of 50 trials where the advisor is always trustworthy OR untrustworthy and the cards are entirely random.
