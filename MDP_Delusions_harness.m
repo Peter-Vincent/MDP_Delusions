@@ -1,5 +1,6 @@
-function mdp = MDP_Delusions_harness(num_trials,initial_states,rand_seed,...
-                                        a_conting,e_dir,affect_param)
+function MDP_Delusions_harness(num_trials,initial_states_path,num_sims,...
+                                        a_conting,e_dir,affect_param,...
+                                        save_dir)
 % num_trials        = total no. trials 
 % initial_states    = output from define_states
 %                    (?use whole sequences from Adams_seq: 120/240 trials)
@@ -15,12 +16,14 @@ b_2       = [1 0;
              0 1];     % transitions for deck (inference +/- process)
 b_dir     = 600;       % Dirichlet parameter for B matrices
 alpha     = 1;         % Precision over policies
-try rand_seed; catch rand_seed = 1; end   
 % Initialisation
 %--------------------------------------------------------------------------
 rng default
 dbstop if error
 tic
+var = load(initial_states_path);
+varname = fieldnames(var);
+initial_states = var.(varname{1});
 if num_trials < size(initial_states,2)
     num_trials = size(initial_states,2);
 end
@@ -223,6 +226,14 @@ for decided = 1:size(initial_states,2)
     MDP(decided).s = cur_state;
 end
 %%
-mdp = spm_MDP_VB_X_rand(MDP,rand_seed);
+sim_results = cell(1,num_sims);
+rand_seeds = randi(100000,[1 num_sims]);
+for sim_number = 1:num_sims
+    mdp = spm_MDP_VB_X_rand(MDP,rand_seeds(sim_number));
+    sim_results{sim_number} = extract_data(mdp);
+end
+file_name = strcat(num2str(a_conting),"_",num2str(e_dir),"_",num2str(affect_param),".mat");
+savepath  = fullfile(save_dir,file_name);
+save(savepath,"sim_results");
 
 end

@@ -237,27 +237,21 @@ h1_ax = fig1_axes(1);
 h2_ax = fig2_axes(1);
 h3_ax = fig3_axes(1);
 figure('Color','w');
-sub_ax1 = subplot(7,1,1:3);
+sub_ax1 = subplot(5,1,1:3);
 set(sub_ax1,'Box','off');
 sub_ax1.YAxis.Visible = 'off'; 
 sub_ax1.XAxis.Visible = 'off';
 sub_ax1.XLim = [0.5 (num_trials+0.5)];
 sub_ax1.YLim = [-max_total max_total];
 
-sub_ax2 = subplot(7,1,4:5);
+sub_ax2 = subplot(5,1,4:5);
 sub_ax2.XLim = [0.5 (num_trials+0.5)];
 sub_ax2.YLim = [0 1];
 sub_ax2.YLabel.String = "Probability";
 
-sub_ax3 = subplot(7,1,6:7);
-sub_ax3.XLim = [0.5 (num_trials+0.5)];
-sub_ax3.YLim = [0 1];
-sub_ax3.YLabel.String = "Probability";
-sub_ax3.XLabel.String = "Trial number";
 
 copyobj(get(h1_ax,'Children'),sub_ax1);
 copyobj(get(h2_ax,'Children'),sub_ax2);
-copyobj(get(h3_ax,'Children'),sub_ax3);
 %% Make the combined figure with arousal
 fig3_axes = findobj('Parent',fig3,'Type','axes');
 h4_ax = fig3_axes(1);
