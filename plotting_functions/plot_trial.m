@@ -257,33 +257,33 @@ fig3_axes = findobj('Parent',fig3,'Type','axes');
 h4_ax = fig3_axes(1);
 figure('Color','w');
 
-sub_ax1 = subplot(8,1,1:3);
+sub_ax1 = subplot(6,1,1:3);
 set(sub_ax1,'Box','off');
 sub_ax1.YAxis.Visible = 'off'; 
 sub_ax1.XAxis.Visible = 'off';
 sub_ax1.XLim = [0.5 (num_trials+0.5)];
 sub_ax1.YLim = [-max_total max_total];
 
-sub_ax2 = subplot(8,1,4);
+sub_ax2 = subplot(6,1,4);
 set(sub_ax2,'Box','off');
 sub_ax2.YAxis.Visible = 'off'; 
 sub_ax2.XAxis.Visible = 'off';
 sub_ax2.XLim = [0.5 (num_trials+0.5)];
 sub_ax2.YLim = [0.8 2.2];
 
-sub_ax3 = subplot(8,1,5:6);
+sub_ax3 = subplot(6,1,5:6);
 sub_ax3.XLim = [0.5 (num_trials+0.5)];
 sub_ax3.YLim = [0 1];
 sub_ax3.XAxis.Visible = 'off';
 sub_ax3.YLabel.String = "Probability";
 
-sub_ax4 = subplot(8,1,7:8);
-sub_ax4.XLim = [0.5 (num_trials + 0.5)];
-sub_ax4.YLim = [0 1];
-sub_ax4.XLabel.String = "Trial number";
-sub_ax4.YLabel.String = "Probability";
+% sub_ax4 = subplot(8,1,7:8);
+% sub_ax4.XLim = [0.5 (num_trials + 0.5)];
+% sub_ax4.YLim = [0 1];
+% sub_ax4.XLabel.String = "Trial number";
+% sub_ax4.YLabel.String = "Probability";
 
 copyobj(get(h1_ax,'Children'),sub_ax1);
 copyobj(get(h4_ax,'Children'),sub_ax2);
 copyobj(get(h2_ax,'Children'),sub_ax3);
-copyobj(get(h3_ax,'Children'),sub_ax4);
+% copyobj(get(h3_ax,'Children'),sub_ax4);
