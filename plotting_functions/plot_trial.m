@@ -50,14 +50,14 @@ for trial = 1:num_trials
     end
     rectangle('Position',[trial-0.5,cur_bounds,1,max_pos-cur_bounds],...
         'FaceColor',card_colour,'EdgeColor','none');
-    %% Plot the behaviour of the advisor
-    if trustworthy(1,trial) == 1
-        trustworthy_colour = trust_col;
-    else
-        trustworthy_colour = not_trust_col;
-    end
-    rectangle('Position',[trial-0.5,-max_total,1,max_total-max_pos-sep],...
-        'FaceColor',trustworthy_colour,'EdgeColor','none');
+%     %% Plot the behaviour of the advisor
+%     if trustworthy(1,trial) == 1
+%         trustworthy_colour = trust_col;
+%     else
+%         trustworthy_colour = not_trust_col;
+%     end
+%     rectangle('Position',[trial-0.5,-max_total,1,max_total-max_pos-sep],...
+%         'FaceColor',trustworthy_colour,'EdgeColor','none');
     if advised_card(1,trial) == 1
         card_colour = card_1_col;
     else
