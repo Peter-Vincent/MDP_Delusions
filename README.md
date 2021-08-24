@@ -4,43 +4,7 @@ This repository contains data and code relating to the MDP_Delusions project, a 
 
 ## Project summary
 
-The aim of the project is to provide a framework for simulating certain types of delusions in patients with paranoid schizophrenia.  The main contribution of this work is to provide an active inference based model to understand why delusions might occur in certain circumstances.  In particular, we focus on the following observations
-- Habits can be beneficial in environments with regular statistics, and are flexible to the exact nature of those statistics
-- Uncertainty over the reliability of the environment can lead imprecise posteriors about the environment
-- Imprecise posteriors coupled with very precise priors can lead to delusions.  The subject of these delusions is driven by the subject of the strong priors
-- Affect can be beneficial in environments with regular statistics, but are in-flexible to the exact nature of those statistics
-- Uncertainty over posteriors is essential to form delusions
+Delusions are, by popular definition, false beliefs that are held with certainty and resistant to contradictory evidence. They seem at odds with the notion that the brain at least approximates Bayesian inference. This is especially the case in schizophrenia, a disorder thought to relate to decreased – rather than increased – certainty in the brain’s model of the world. We use an active inference Markov decision process model (a Bayes-optimal decision-making agent) to perform a simple task involving social and non-social inferences. We show that even moderate changes in some model parameters – decreasing confidence in sensory input and increasing confidence in states implied by its own (especially habitual) actions – can lead to delusions as defined above. Incorporating affect in the model increases delusions, specifically in the social domain. The model also reproduces some classic psychological effects, including choice-induced preference change, and an optimism bias in inferences about oneself. A key observation is that no change in a single parameter is both necessary and sufficient for delusions; rather, delusions arise due to conditional dependencies that create ‘basins of attraction’ which trap Bayesian beliefs. Simulating the effects of antidopaminergic antipsychotics – by reducing the model’s confidence in its actions – demonstrates that the model can escape from these attractors, through this synthetic pharmacotherapy.
 
-## Figure summary
-### Figure 1
-Figure 1 will show a schematic of the overall experimental structure, generative model and generative process, and provide a (clear) example of a single trial in a couple of different scenarios
-- [ ] Basic figure draft
-- [ ] Final figure complete
 
-### Figure 2
-Figure 2 will show how habits can be beneficial in environments with regular statistics, but can lead to inflexibility if those statistics suddenly change and habits are over-learnt
-- [ ] Basic figure draft
-- [ ] Final figure complete
 
-### Figure 3
-Figure 3 will show how imprecision in beliefs about the environment can couple with very strong priors to give rise to delusions, and will explore the nature of these delusions
-- [ ] Basic figure draft
-- [ ] Final figure complete
-
-### Figure 4
-Figure 4 will show a parameters sweep of precision in beleifs about feedback and habit learning to show how these two parameters interplay to form delusions.  Habit parameter will be on a logarithmic scale
-- [ ] Basic figure draft
-- [ ] Final figure complete
-
-### Figure 5
-Figure 5 will introduce the concept of affect, and show how it can be beneficial, but is in general very inflexible and will lead to poor performance, but not delusions
-- [ ] Basic figure draft
-- [ ] Final figure complete
-
-### Figure 6
-Figure 6 will show a parameter sweep of precision in beliefs about feedback, with a set of different parameters over the habit forming and the strength of the affect
-- [ ] Basic figure draft
-- [ ] Final figure complete
-
-## Key experimental details
-For all experiments we enforce habits to be formed over the advisor, not the cards.  We do this by beginning every experiment with a sequence of 50 trials where the advisor is always trustworthy OR untrustworthy and the cards are entirely random.
