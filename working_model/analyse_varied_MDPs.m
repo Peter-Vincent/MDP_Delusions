@@ -14,7 +14,6 @@ save_fold  = 'MDP_sim_symm_beta/';
 code_path  = '/Users/rickadams/Dropbox/Rick/Academic/Delusions model/working_model/';
 plot_path  = [code_path 'plotting_functions/'];
 spm_path   = '/Users/rickadams/Code/SPM/spm12_v7771/';
-fun_path   = '/Users/rickadams/Dropbox/Downloaded_functions/';
 save_path  = [save_root save_fold];
 addpath(save_path, code_path, spm_path, plot_path)
 addpath([spm_path 'toolbox/DEM/'])
