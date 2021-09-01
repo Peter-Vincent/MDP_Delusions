@@ -1,6 +1,6 @@
 # MDP_Delusions
 
-This repository contains data and code relating to the MDP_Delusions project, a collaboration between Rick Adams, Thomas Parr, Peter Vincent, David Benrimoh and Karl Friston
+This repository contains data and code relating to the MDP_Delusions project, a collaboration between Rick Adams, Peter Vincent, Thomas Parr, David Benrimoh and Karl Friston
 
 ## Project summary
 
