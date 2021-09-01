@@ -1,6 +1,6 @@
 # MDP_Delusions
 
-This repository contains data and code relating to the MDP_Delusions project, a collaboration between Rick Adams, Peter Vincent, Thomas Parr, David Benrimoh and Karl Friston
+This repository contains data and code relating to the MDP_Delusions project, a collaboration between Rick Adams, Peter Vincent, David Benrimoh, Karl Friston and Thomas Parr.
 
 ## Project summary
 
@@ -8,7 +8,7 @@ Delusions are, by popular definition, false beliefs that are held with certainty
 
 ## Using the code
 
-All the code (almost) needed to run the simulations included in this work can be found in this repo.  You will also need a version of Matlab (this project was developed using MATLAB R2019b) and SPM12, which you can download [here](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/)
+All the code (almost) needed to run the simulations included in this work can be found in this repo.  You will also need a version of Matlab (this project was developed using MATLAB R2019b) and SPM12, which you can download [here](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/).
 
 Figures **2a**, **2b**, **3a**, **3b**, **3c**, **4a**, **4b** and **4c** can be run quickly by running `Production_Figures/single_MDPs_for_figures.m` which will load in the relevant simulations used for each graphic - note that paths at the beginning of the file (lines 8, 9, 11, 12) will need to be updated for your setup.  Alternatively, this script also gives the code and parameters required to re-create each simulation.  These can be easily changed within the script.
 
