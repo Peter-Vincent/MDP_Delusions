@@ -9,7 +9,6 @@ save_path  = '/Users/rickadams/Dropbox/Rick/Academic/Delusions model/MDP_sims_fo
 code_path  = '/Users/rickadams/Dropbox/Rick/Academic/Delusions model/working_model/';
 plot_path  = [code_path 'plotting_functions/'];
 spm_path   = '/Users/rickadams/Code/SPM/spm12_v7771/';
-fun_path   = '/Users/rickadams/Dropbox/Downloaded_functions/';
 addpath(save_path, code_path, spm_path, plot_path)
 addpath([spm_path 'toolbox/DEM/'])
 addpath(genpath(fun_path))
